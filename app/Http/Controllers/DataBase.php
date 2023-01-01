@@ -64,8 +64,8 @@ class DataBase extends Controller
         return redirect('/dashboard/'.$req->registration);
     }
 
-    function deletecomplaint($registration){
-        DB::delete("DELETE FROM `complaints` WHERE `registration` = '".$registration."'");
+    function deletecomplaint($registration, $department, $message){
+        DB::delete("DELETE FROM `complaints` WHERE `registration` = '".$registration."' AND `department` = '".$department."' AND `message` = '".$message."'");
         return redirect()->back();
     }
 

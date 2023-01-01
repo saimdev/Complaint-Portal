@@ -22,7 +22,7 @@ Route::get('/dashboard/{registration}',[DataBase::class, 'dashboard']);
 Route::get('complaint/{name}/{registration}',[DataBase::class, 'form']);
 Route::get('register/{name}',[DataBase::class, 'registercomplaint']);
 Route::view('logout', 'login');
-Route::get('delete/{registration}', [DataBase::class, 'deletecomplaint']);
+Route::get('delete/{registration}/{department}/{message}', [DataBase::class, 'deletecomplaint']);
 Route::get('/admin', [DataBase::class, 'showadmin']);
 Route::get('/list', [DataBase::class, 'showstudents']);
 Route::get('{registration}/delete', [DataBase::class, 'deletestudent']);

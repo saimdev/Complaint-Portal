@@ -54,7 +54,7 @@
                                 <td>{{$item->registration}}</td>
                                 <td>{{$item->department}}</td>
                                 <td>{{$item->message}}</td>
-                                <td><a href="/delete/{{$item->registration}}" class="btn btn-success">Complete</a></td>
+                                <td><a href="/delete/{{$item->registration}}/{{$item->department}}/{{$item->message}}" class="btn btn-success">Complete</a></td>
                             </tr>
                         @endforeach
                     </tbody>
