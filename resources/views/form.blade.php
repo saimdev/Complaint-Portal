@@ -13,7 +13,8 @@
     <div class="d-flex flex-column jusitfy-content-center align-items-center my-5">
     <h1 class="text-center mb-4">Complaint Form</h1>
 
-        <form class="form w-50" action="/register/{{$name}}" style="padding:3rem">
+        <form class="form w-50" action="/register/{{$name}}" style="padding:3rem" enctype="multipart/form-data" method="POST">
+            @csrf
             @foreach ($collection as $item)
             <div class="d-flex flex-column my-3">
                 <label for="">Name</label>
@@ -25,9 +26,18 @@
             </div>
             @endforeach
             <div class="d-flex flex-column my-3">
+                <label for="">File Name</label>
+                <input type="text" name="filename" class="my-1" placeholder="Enter Filename">
+                <input type="file" name="file" class="my-1">
+            </div>
+            <div class="d-flex flex-column my-3">
                 <label for="">Complaint</label>
                 <textarea name="message" class="my-1" id="" cols="30" rows="10" placeholder="Write Message"></textarea>
             </div>
+            @if(session()->has('error'))
+                            <div class="alert alert-danger error-message text-center" style="background: transparent; font-size:0.8rem; margin-top:0.4rem; border:none; color:rgb(237, 73, 86)">
+                                {{ session()->get('error') }}</div>
+            @endif
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>

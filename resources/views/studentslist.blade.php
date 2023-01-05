@@ -16,18 +16,21 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
-<body class="bg-dark text-white">
+<body class="bg-dark">
     <div class="container-fluid">
         <div class="row">
             <div class="col col-2 d-flex flex-column vh-100 justify-content-between p-3" style="background: url(/images/comsatswah.jpg); background-position: center;
             background-size: cover; border-radius:0 0.6rem 0.6rem 0">
-                <div class="d-flex flex-column">
+                <div class="d-flex flex-column" style="">
                     <h3 class="fw-bold">ADMIN PANEL</h3>
-                    <a href="/admin" class="text-decoration-underline text-white my-2">
-                        List of Complaints
+                    <a href="/admin" class="fw-bold text-decoration-none py-2 px-4 text-white my-2 bg-success" style="border-radius:0.6rem;">
+                        List of Un-Completed Complaints
                     </a>
-                    <a href="/list" class="text-decoration-underline text-white my-2">
+                    <a href="/list" class="fw-bold text-decoration-none py-2 px-4 text-white my-2 bg-success" style="border-radius:0.6rem;">
                         List of Students
+                    </a>
+                    <a href="/listofall" class="fw-bold text-decoration-none py-2 px-4 text-white my-2 bg-success" style="border-radius:0.6rem;">
+                        List of All Complaints
                     </a>
                 </div>
                 <div>
@@ -38,11 +41,12 @@
                 <table class="table text-white my-5">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Registration</th>
-                            <th>Operation</th>
+                            <th>@sortablelink('id', 'ID')</th>
+                            <th>@sortablelink('name', 'Name')</th>
+                            <th>@sortablelink('email', 'Email')</th>
+                            <th>@sortablelink('registration', 'Registration')</th>
+                            <th>Privacy</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -52,11 +56,17 @@
                                 <td>{{$item->name}}</td>
                                 <td>{{$item->email}}</td>
                                 <td>{{$item->registration}}</td>
+                                @if ($item->status==0)
+                                    <td><a href="/updatestudent/{{$item->registration}}/1" class="btn btn-danger">Disable</a></td>
+                                @else
+                                    <td><a href="/updatestudent/{{$item->registration}}/0" class="btn btn-success">Enable</a></td>
+                                @endif
                                 <td><a href="/{{$item->registration}}/delete" class="btn btn-danger">Delete</a></td>
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
+                {!! $collection->appends(\Request::except('page'))->render() !!}
             </div>
         </div>
     </div>

@@ -39,8 +39,6 @@
             </div>
             <div class="col col-10 px-4 d-flex flex-column justify-content-center align-items-center">
                 <table class="table text-white my-5">
-                    <h1 class="h1 text-white">No. Of Students <span class="text-danger">{{$students}}</span></h1>
-                    <h1 class="h1 text-white">No. Of Complaints <span class="text-danger">{{$complaints}}</span></h1>
                     <thead>
                         <tr>
                             <th>@sortablelink('id', 'ID')</th>
@@ -48,9 +46,7 @@
                             <th>@sortablelink('registration', 'Registration')</th>
                             <th>@sortablelink('department', 'Department')</th>
                             <th>Complain</th>
-                            <th>File</th>
-                            <th>Update</th>
-                            <th>Delete</th>
+                            <th>Operation</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -61,9 +57,11 @@
                                 <td>{{$item->registration}}</td>
                                 <td>{{$item->department}}</td>
                                 <td>{{$item->message}}</td>
-                                <td><a href="/download/{{basename($item->filepath)}}" class="text-white">{{$item->filename}}</a></td>
-                                <td><a href="/update/{{$item->registration}}/{{$item->department}}/{{$item->message}}" class="btn btn-success">Complete</a></td>
-                                <td><a href="/delete/{{$item->registration}}/{{$item->department}}/{{$item->message}}" class="btn btn-danger">Delete</a></td>
+                                @if ($item->status==0)
+                                    <td><p class="bg-danger py-1 text-center" style="border-radius: 0.5rem">Uncompleted</p></td>
+                                @else
+                                    <td><p class="bg-success py-1 text-center" style="border-radius: 0.5rem">Completed</p></td>
+                                @endif
                             </tr>
                         @endforeach
                     </tbody>

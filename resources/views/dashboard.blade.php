@@ -84,6 +84,9 @@
                 </div>
               </div>
         </div>
+        <div class="d-flex justify-content-center">
+          <a href="/showcomplaints/{{$registration}}" class="mb-4 py-2 px-3 bg-success text-decoration-none text-white" style="border-radius: 0.5rem">Show Complaints Status</a>
+        </div>
     </div>
 </body>
 

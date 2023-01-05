@@ -91,3 +91,39 @@ input:focus, textarea:focus{
     border: none;
     outline: none;
 }
+
+
+.bg-white{
+    background: black !important;
+}
+
+.border{
+    border: black;
+}
+
+nav>div>div{
+    /* margin-top: 20px;
+    margin-bottom: 20px; */
+    display: none;
+}
+
+nav>div>span, nav>div>a, nav>div>div>p{
+    font-size: 0.8rem;
+}
+
+
+nav>div>div>span>span>span>svg{
+    fill: white;
+    width: 30px;
+}
+
+nav>div>div>span>a>svg{
+    fill: white;
+    width: 30px;
+}
+
+.border, .border-gray-300{
+    /* border: 1px solid white !important;
+    border-radius: 8px !important; */
+    border: none !important;
+}

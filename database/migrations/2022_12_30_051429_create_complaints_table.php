@@ -18,7 +18,10 @@ return new class extends Migration
             $table->string('name', 100);
             $table->string('registration', 100);
             $table->string('department', 80);
+            $table->string('filename');
+            $table->string('filepath', 100);
             $table->text('message');
+            $table->integer('status');
             $table->timestamps();
         });
     }
